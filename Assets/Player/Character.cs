@@ -23,13 +23,11 @@ public class Character : MonoBehaviour
     private Vector3 playerVelocity;
 
     private PlayerControls playerControls;
-    private PlayerInput playerInput;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
-        playerInput = GetComponent<PlayerInput>();
     }
 
     void OnEnable()
@@ -103,4 +101,8 @@ public class Character : MonoBehaviour
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
+
+
+
+
 }

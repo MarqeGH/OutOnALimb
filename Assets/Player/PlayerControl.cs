@@ -44,6 +44,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""9792c6bb-13ea-4b08-8ef7-233d28019b74"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""123345c7-145f-45ae-a6cd-3f90068b1a51"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -134,6 +152,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c19e11e2-d43e-4a77-a62e-460007f222ec"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""Shoot Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0fe320b-aee0-4f97-8d07-c2202d8587e6"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""269e14e4-d6d1-4cec-99dc-a3653817439d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""Shoot Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b085f29b-d69f-4225-8af1-c4d88184a277"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -172,6 +234,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
         m_Controls_Movement = m_Controls.FindAction("Movement", throwIfNotFound: true);
         m_Controls_Aim = m_Controls.FindAction("Aim", throwIfNotFound: true);
+        m_Controls_ShootLeft = m_Controls.FindAction("Shoot Left", throwIfNotFound: true);
+        m_Controls_ShootRight = m_Controls.FindAction("Shoot Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -235,12 +299,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IControlsActions> m_ControlsActionsCallbackInterfaces = new List<IControlsActions>();
     private readonly InputAction m_Controls_Movement;
     private readonly InputAction m_Controls_Aim;
+    private readonly InputAction m_Controls_ShootLeft;
+    private readonly InputAction m_Controls_ShootRight;
     public struct ControlsActions
     {
         private @PlayerControls m_Wrapper;
         public ControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Controls_Movement;
         public InputAction @Aim => m_Wrapper.m_Controls_Aim;
+        public InputAction @ShootLeft => m_Wrapper.m_Controls_ShootLeft;
+        public InputAction @ShootRight => m_Wrapper.m_Controls_ShootRight;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +324,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Aim.started += instance.OnAim;
             @Aim.performed += instance.OnAim;
             @Aim.canceled += instance.OnAim;
+            @ShootLeft.started += instance.OnShootLeft;
+            @ShootLeft.performed += instance.OnShootLeft;
+            @ShootLeft.canceled += instance.OnShootLeft;
+            @ShootRight.started += instance.OnShootRight;
+            @ShootRight.performed += instance.OnShootRight;
+            @ShootRight.canceled += instance.OnShootRight;
         }
 
         private void UnregisterCallbacks(IControlsActions instance)
@@ -266,6 +340,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Aim.started -= instance.OnAim;
             @Aim.performed -= instance.OnAim;
             @Aim.canceled -= instance.OnAim;
+            @ShootLeft.started -= instance.OnShootLeft;
+            @ShootLeft.performed -= instance.OnShootLeft;
+            @ShootLeft.canceled -= instance.OnShootLeft;
+            @ShootRight.started -= instance.OnShootRight;
+            @ShootRight.performed -= instance.OnShootRight;
+            @ShootRight.canceled -= instance.OnShootRight;
         }
 
         public void RemoveCallbacks(IControlsActions instance)
@@ -305,5 +385,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnShootLeft(InputAction.CallbackContext context);
+        void OnShootRight(InputAction.CallbackContext context);
     }
 }

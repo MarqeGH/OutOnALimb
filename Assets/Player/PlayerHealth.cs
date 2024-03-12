@@ -24,9 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ApplyDamage(int dmg)
     {
-        Debug.Log("Health before hit: " + currentHealth);
         currentHealth -= dmg;
-        Debug.Log("Health after hit: " + currentHealth);
         if (currentHealth <= 0)
         {
             PlayerDeath();
