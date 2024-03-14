@@ -13,7 +13,7 @@ public class PlayerDamage : MonoBehaviour
         {
             var enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.ApplyDamage(damageDealt);
-            Destroy(gameObject);
+            // Debug.Log("Damage Dealt");
         }
     }
 }

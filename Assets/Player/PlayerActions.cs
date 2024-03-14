@@ -12,21 +12,34 @@ public class PlayerActions : MonoBehaviour
     private InputAction shootRight;
     private InputAction shootLeft;
 
-    public GameObject[] weaponLeft;
-    public GameObject[] weaponRight;
+    public FireWeapon[] weaponLeft;
+    public FireWeapon[] weaponRight;
+    bool LMBisPressed;
+    bool RMBisPressed;
+    bool isShootingLeft = false;
+    bool isShootingRight = false;
+
+
     // Start is called before the first frame update
     
     void Awake()
     {
         playerControls = new PlayerControls();
     }
+
+    void Start()
+    {
+        DefineShootState();
+    }
+
     
+
     void OnEnable()
     {
         shootRight = playerControls.Controls.ShootRight;
         shootLeft = playerControls.Controls.ShootLeft;
-        shootRight.performed += ShootRightWeapon;
-        shootLeft.performed += ShootLeftWeapon;
+        // shootRight.performed += ShootRightWeapon;
+        // shootLeft.performed += ShootLeftWeapon;
         shootRight.Enable();
         shootLeft.Enable();
     }
@@ -43,28 +56,62 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (RMBisPressed)
+        {
+            ShootRightWeapon();
+            isShootingRight = true;
+        }
+        else 
+        {
+            isShootingRight = false;
+        }
+        if (LMBisPressed)
+        {
+            ShootLeftWeapon();
+            isShootingLeft = true;
+        }
+        else 
+        {
+            isShootingLeft = false;
+        }
     }
 
-    void ShootRightWeapon(InputAction.CallbackContext obj)
+    private void DefineShootState()
     {
-       foreach (GameObject weapon in weaponRight)
-       {
-            if (weapon.activeSelf)
-            {
-                var fireWeapon = weapon.GetComponent<FireWeapon>();
-                fireWeapon.Shoot();
-            }
-       }
+        playerControls.Controls.ShootLeft.performed += _ => LMBisPressed = true;
+        playerControls.Controls.ShootLeft.canceled += _ => LMBisPressed = false;
+        playerControls.Controls.ShootRight.performed += _ => RMBisPressed = true;
+        playerControls.Controls.ShootRight.canceled += _ => RMBisPressed = false;
     }
-    void ShootLeftWeapon(InputAction.CallbackContext obj)
+
+    void ShootRightWeapon()
     {
-        foreach (GameObject weapon in weaponLeft)
-       {
-            if (weapon.activeSelf)
+        if (!isShootingLeft)
+        {
+            for (int i = 0; i < weaponRight.Length; ++i)
             {
-                var fireWeapon = weapon.GetComponent<FireWeapon>();
-                fireWeapon.Shoot();
+                FireWeapon weapon = weaponRight[i];
+                if (weapon.gameObject.activeSelf)
+                {
+                    weapon.Shoot();
+                    break;
+                }
             }
-       }
+        }
+    }
+    void ShootLeftWeapon()
+    {
+        if (!isShootingRight)
+        {
+            for (int i = 0; i < weaponLeft.Length; ++i)
+            {
+                FireWeapon weapon = weaponLeft[i];
+                if (weapon.gameObject.activeSelf)
+                {
+                    weapon.Shoot();
+                    break;
+                }
+            }
+        }
     }
 }

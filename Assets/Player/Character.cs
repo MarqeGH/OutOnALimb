@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
     [SerializeField] float controllerDeadzone = 0.1f;
     [SerializeField] float gamepadRotateSmoothing = 1000f;
     [SerializeField] bool isGamepad;
+    Animator animator;
 
     private CharacterController characterController;
 
@@ -28,6 +29,10 @@ public class Character : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
+    }
+    void Start()
+    {
+        SetupAnimator();
     }
 
     void OnEnable()
@@ -53,7 +58,15 @@ public class Character : MonoBehaviour
     {
         movement = playerControls.Controls.Movement.ReadValue<Vector2>();
         aim = playerControls.Controls.Aim.ReadValue<Vector2>();
+        HandleMoveAnimations();
     }
+
+    private void HandleMoveAnimations()
+    {
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+    }
+
     void HandleMovement()
     {
         Vector3 move = new Vector3(movement.x, 0, movement.y);
@@ -100,6 +113,21 @@ public class Character : MonoBehaviour
     public void OnDeviceChange(PlayerInput pi)
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+
+    void SetupAnimator()
+    {
+        animator = GetComponent<Animator>();
+
+        foreach (var childAnimator in GetComponentsInChildren<Animator>())
+        {
+            if (childAnimator != animator)
+            {
+                animator.avatar = childAnimator.avatar;
+                Destroy(childAnimator);
+                break;
+            }
+        }
     }
 
 

@@ -6,38 +6,64 @@ using UnityEngine.Pool;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner pool;
-    public List<GameObject> pooledObjects;
-    public GameObject enemyPrefab;
-    public int poolSize = 30;
+    public ObjectPool<MoveEnemy> _pool;
+    public MoveEnemy prefab;
+    [SerializeField] int defaultPool;
+    [SerializeField] int poolSize;
+    [SerializeField] float spawnTimer = 5;
+    bool doSpawn = true;
 
-    void Awake()
-    {
-        pool = this;
-    }
 
     void Start()
     {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < poolSize; ++i)
-        {
-            tmp = Instantiate(enemyPrefab);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
-        }
-        StartCoroutine("SpawnEnemies");
+    _pool = new ObjectPool<MoveEnemy>(CreateEnemy, OnGetEnemyFromPool, OnReleaseEnemyFromPool, OnDestroyEnemyFromPool, true, defaultPool, poolSize);
+    // POOL ORDER: (D)Create P on load --> (D-)Action on get P --> Action on Destroy P --/
+    //--> Collection Check(did I already release P?) --> Default Capacity --> Max Capacity
     }
 
-    public GameObject GetPooledObject()
+    void Update()
     {
-        for (int i = 0; i < poolSize; ++i)
+        if ((int)Time.timeSinceLevelLoad%spawnTimer == 0 && doSpawn == true)
         {
-            if(!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
-            }
+            doSpawn = false;
+            _pool.Get();
         }
-        return null;
+        else if ((int)Time.timeSinceLevelLoad%spawnTimer > 0)
+        {
+            doSpawn = true;
+        }
+    }
+    
+    // Create Enemies for pool
+    private MoveEnemy CreateEnemy()
+    {
+        // Spawn new instance of bullet
+        MoveEnemy enemy = Instantiate(prefab, transform.position, transform.rotation);
+
+        // Assign the bullet's pool
+        enemy.SetPool(_pool);
+        
+        // return value
+        return enemy;
+    }
+    // What to do when taking enemy from Pool
+    private void OnGetEnemyFromPool(MoveEnemy enemy)
+    {
+        // Reset enemy position & rotation to Weapon pos and Player Rot
+        enemy.transform.position = transform.position;
+        enemy.transform.rotation = transform.rotation;
+
+        // Activate enemy
+        enemy.gameObject.SetActive(true);
+    }
+
+    private void OnReleaseEnemyFromPool(MoveEnemy enemy)
+    {
+        enemy.gameObject.SetActive(false);
+    }
+
+    private void OnDestroyEnemyFromPool(MoveEnemy enemy)
+    {
+        Destroy(enemy.gameObject);
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Right Arm
   - Left Arm
+  - Projectile
   layers:
   - Default
   - TransparentFX

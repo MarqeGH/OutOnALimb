@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2486850376624632722}
   m_Layer: 0
   m_Name: Player_Fireball
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754d4272c291a4a1aba97a4b8d4290c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  player: {fileID: 0}
+  speed: 50
+  timeTillRelease: 4
   rb: {fileID: 2486850376624632722}
 --- !u!54 &2486850376624632722
 Rigidbody:
