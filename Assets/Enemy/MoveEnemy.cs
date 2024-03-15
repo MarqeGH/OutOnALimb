@@ -7,7 +7,6 @@ using UnityEngine.Pool;
 
 public class MoveEnemy : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 1;
     public NavMeshAgent enemy;
     GameObject player;
     private ObjectPool<MoveEnemy> _pool;

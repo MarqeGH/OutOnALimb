@@ -358,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 106434987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 539, y: -281, z: 0}
+  m_LocalPosition: {x: 326, y: -250, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -378,9 +378,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa5ab769bbda48a1a71347e58e89712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiCurrentWeapon: {fileID: 0}
+  UiCurrentWeapon: {fileID: 419745030}
   UiCycleFill: {fileID: 1264551754}
-  weaponCycle: {fileID: 1784680912}
+  weaponCycle: {fileID: 1784680913}
 --- !u!1 &325956566
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 325956569}
   - component: {fileID: 325956568}
   m_Layer: 5
-  m_Name: FuelWheelFull
+  m_Name: TimeLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 419745031}
   - component: {fileID: 419745030}
   m_Layer: 5
-  m_Name: FuelWheelEmpty
+  m_Name: UI_CurrentWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,27 +756,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitButton: {fileID: 45171085}
   resumeButton: {fileID: 1871736003}
---- !u!1 &519191612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7349570357849148037, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
+--- !u!114 &519191616 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4346614310331723285, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
   m_PrefabInstance: {fileID: 4045757525128462673}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &519191614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519191612}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5db9f34f75414385b9b1feb3296bad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCap: 100
-  timeFill: 40
-  timeReduce: 12.5
-  timeLeft: 0
 --- !u!1 &589974579
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 616502068}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 326, y: -281, z: 2}
+  m_LocalPosition: {x: 510, y: -250, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -957,9 +947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa5ab769bbda48a1a71347e58e89712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiCurrentWeapon: {fileID: 0}
+  UiCurrentWeapon: {fileID: 742275002}
   UiCycleFill: {fileID: 325956568}
-  weaponCycle: {fileID: 519191614}
+  weaponCycle: {fileID: 519191616}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1056,7 @@ GameObject:
   - component: {fileID: 742275003}
   - component: {fileID: 742275002}
   m_Layer: 5
-  m_Name: FuelWheelEmpty
+  m_Name: UI_CurrentWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1274,7 +1264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2484460993438854981, guid: 790bf319a43db424f85123fddf93c7a7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2968229154913056255, guid: 790bf319a43db424f85123fddf93c7a7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1430,8 +1420,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 616502069}
   - {fileID: 106434988}
+  - {fileID: 616502069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1451,7 +1441,7 @@ GameObject:
   - component: {fileID: 1264551755}
   - component: {fileID: 1264551754}
   m_Layer: 5
-  m_Name: FuelWheelFull
+  m_Name: TimeLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873043915039329260, guid: beefc3a123d1d864e8b2f8d8c87d6e5f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1903,27 +1893,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597178158}
   m_CullTransparentMesh: 1
---- !u!1 &1784680910 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7039136783335509716, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
+--- !u!114 &1784680913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2616155017634160355, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
   m_PrefabInstance: {fileID: 4045757525128462673}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1784680912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784680910}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5db9f34f75414385b9b1feb3296bad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCap: 100
-  timeFill: 40
-  timeReduce: 12.5
-  timeLeft: 0
 --- !u!1 &1820604082
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,6 +2243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2616155017634160355, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
+      propertyPath: UIWeapon
+      value: 
+      objectReference: {fileID: 106434989}
     - target: {fileID: 3601842527979134325, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2303,16 +2287,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4346614310331723285, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
+      propertyPath: UIWeapon
+      value: 
+      objectReference: {fileID: 616502070}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7039136783335509716, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1784680912}
-    - targetCorrespondingSourceObject: {fileID: 7349570357849148037, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 519191614}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
 --- !u!4 &6400185018230570477 stripped
 Transform:

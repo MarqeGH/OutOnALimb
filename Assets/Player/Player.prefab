@@ -1545,10 +1545,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db9f34f75414385b9b1feb3296bad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIWeapon: {fileID: 0}
   timeCap: 100
   timeFill: 40
   timeReduce: 12.5
-  timeLeft: 0
+  timeLeft: 100
 --- !u!1 &7056115593535888490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,10 +1629,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db9f34f75414385b9b1feb3296bad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIWeapon: {fileID: 0}
   timeCap: 100
   timeFill: 40
   timeReduce: 12.5
-  timeLeft: 0
+  timeLeft: 100
 --- !u!1 &7388745991914200966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6012042950096164709, guid: 90a1489b8ea934acab9f1c6ada1245d6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2533,7 +2535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734480436759455385, guid: 0bc5eb34319514e7d9591b60662f72ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

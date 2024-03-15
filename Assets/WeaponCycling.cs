@@ -19,18 +19,15 @@ public class WeaponCycling : MonoBehaviour
 
 
     [SerializeField] float timeCap = 100f;
-    [SerializeField] float timeFill = 40f;
     [SerializeField] float timeReduce = 12.5f;
 
     float timeHalf;
-    
-    [HideInInspector] public float timeLeft;
+    public float timeLeft;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         weaponHolder = gameObject;
-        Debug.Log(weaponHolder);
         DefineWeaponsAtStart();
         timeLeft = timeCap;
         timeHalf = timeCap/2;
@@ -72,6 +69,7 @@ public class WeaponCycling : MonoBehaviour
         random = Random.Range(0, weapons.Count);
         currentWeapon = weapons[random];
         currentWeapon.SetActive(true);
+        Debug.Log(currentWeapon.GetComponent<FireWeapon>().weaponImage);
         UIWeapon.ChangeWeaponImage(currentWeapon.GetComponent<FireWeapon>().weaponImage);
         // UIWeapon.ChangeWeaponImage(currentWeapon.GetComponent<FireWeapon>().weaponImage);
     }

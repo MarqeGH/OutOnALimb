@@ -26,14 +26,9 @@ public class UI_WeaponCycling : MonoBehaviour
     {
         timeLeft = weaponCycle.timeLeft;
         UiCycleFill.fillAmount = timeLeft/isFull;
-        Debug.Log(timeLeft);
-        Debug.Log(isFull);
     }
     public void ChangeWeaponImage(Sprite weapon)
     {
         UiCurrentWeapon.sprite = weapon;
     }
-
-
-
 }

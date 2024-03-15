@@ -6,14 +6,11 @@ using UnityEngine.Pool;
 
 public class ProjectileMove : MonoBehaviour
 {
-    [SerializeField] GameObject player;
     [SerializeField] float speed;
     [SerializeField] float timeTillRelease = 5;
     public Rigidbody rb;
     private ObjectPool<ProjectileMove> _pool;
     
-
-
     void Start() {
         rb = GetComponent<Rigidbody>();
     }
@@ -37,11 +34,11 @@ public class ProjectileMove : MonoBehaviour
     {
         if (!other.transform.root.CompareTag("Player") && !other.CompareTag("Projectile"))
         {
+            Debug.Log(other);
             _pool.Release(this);
             // NOTE: Physics weird?? Sleep / Wake b4 release? Switch AddForce --> Translate + Interpolate(if rb not working)
         }
     }
-    
 
     public void SetPool(ObjectPool<ProjectileMove> pool)
     {
