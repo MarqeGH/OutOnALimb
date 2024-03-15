@@ -26,7 +26,6 @@ public class ProjectileMove : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = transform.forward*speed;
-        Debug.Log("please compile");
     }
 
     IEnumerator releaseProjectile()

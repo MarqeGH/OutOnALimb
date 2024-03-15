@@ -36,8 +36,8 @@ public class MoveEnemy : MonoBehaviour
 
     public void SetPool(ObjectPool<MoveEnemy> pool)
     {
-        Debug.Log(_pool + " before");
+        // Debug.Log(_pool + " before");
         _pool = pool;
-        Debug.Log(_pool + " after");
+        // Debug.Log(_pool + " after");
     }
 }

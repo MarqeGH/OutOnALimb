@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth != maxHealth)
         {
             currentHealth = maxHealth;
-            Debug.Log(isDead + " " + currentHealth);    
+            // Debug.Log(isDead + " " + currentHealth);    
         }
     }
 
@@ -53,7 +53,7 @@ public class EnemyHealth : MonoBehaviour
     void EnemyDeath()
     {
         if(isDead)return;
-        Debug.Log("dead once");
+        // Debug.Log("dead once");
         isDead = true;
 
         nma.speed = 0;

@@ -128,7 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc4deb86bde74b64a202307514366c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  defaultPool: 0
-  poolSize: 0
-  attackSpeed: 0
+  prefab: {fileID: -6038373363503274747, guid: fbf59b251494e410687f1b9b6ae588bc, type: 3}
+  defaultPool: 3
+  poolSize: 6
+  attackSpeed: 2
+  timeValue: 15
+  weaponImage: {fileID: 21300000, guid: 4844cfccb899442c8b60a14143cc5e1f, type: 3}

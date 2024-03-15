@@ -13,7 +13,16 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] int defaultPool;
     [SerializeField] int poolSize;
     [SerializeField] float attackSpeed;
+    [SerializeField] float timeValue;
+    public Sprite weaponImage; 
+    
+    WeaponCycling weaponCycling;
     float timePassed;
+
+    void OnEnable()
+    {
+        weaponCycling = transform.parent.gameObject.GetComponent<WeaponCycling>();
+    }
 
     void Start()
     {
@@ -33,11 +42,9 @@ public class FireWeapon : MonoBehaviour
         {
             _pool.Get();
             timePassed = 0;
+            weaponCycling.FillWeaponTime(timeValue);
         }
     }
-
-
-
 
     private ProjectileMove CreateProjectile()
     {

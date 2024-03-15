@@ -384,3 +384,5 @@ MonoBehaviour:
   defaultPool: 15
   poolSize: 60
   attackSpeed: 0.5
+  timeValue: 0.375
+  weaponImage: {fileID: 21300000, guid: 9863b0bb9341f4e2487c78d60a710413, type: 3}

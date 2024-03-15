@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,14 @@ public class Character : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 aim;
+
+    Transform cam;
+    Vector3 camForward;
+    Vector3 moveanim;
+    Vector3 moveInput;
+
+    float forwardAmount;
+    float turnAmount;
     
     private Vector3 playerVelocity;
 
@@ -33,6 +42,7 @@ public class Character : MonoBehaviour
     void Start()
     {
         SetupAnimator();
+        cam = Camera.main.transform;
     }
 
     void OnEnable()
@@ -63,8 +73,46 @@ public class Character : MonoBehaviour
 
     private void HandleMoveAnimations()
     {
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
+        if (cam != null)
+        {
+            camForward = Vector3.Scale(cam.forward, new Vector3(1, -15, 0).normalized);
+            moveanim = movement.y * camForward + movement.x * cam.right;
+        }
+        else
+        {
+            moveanim = movement.y * Vector3.up + movement.x * cam.right;
+        }
+
+        if (moveanim.magnitude > 1)
+        {
+            moveanim.Normalize();
+        }
+        MoveCharacter(moveanim);
+    }
+
+    void MoveCharacter(Vector3 vector3)
+    {
+        if (vector3.magnitude > 1)
+        {
+            vector3.Normalize();
+        }
+        this.moveInput = vector3;
+
+        ConvertMoveInput();
+        UpdateAnimator();
+    }
+
+    void ConvertMoveInput()
+    {
+        Vector3 localMove = transform.InverseTransformDirection(moveInput);
+        turnAmount = localMove.x;
+        forwardAmount = localMove.y;
+    }
+
+    void UpdateAnimator()
+    {
+        animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+        animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
     }
 
     void HandleMovement()
