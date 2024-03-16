@@ -1534,7 +1534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2484460993438854981, guid: 790bf319a43db424f85123fddf93c7a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2968229154913056255, guid: 790bf319a43db424f85123fddf93c7a7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1826,7 +1826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1354592157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2556,6 +2556,10 @@ PrefabInstance:
     - target: {fileID: 3601842527979134325, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823103001978497624, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
+      propertyPath: speed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4346614310331723285, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: UIWeapon
