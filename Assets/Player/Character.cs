@@ -73,21 +73,21 @@ public class Character : MonoBehaviour
 
     private void HandleMoveAnimations()
     {
-        Debug.Log(cam);
-        if (cam != null)
+
+        if(cam != null)
         {
-            camForward = Vector3.Scale(cam.forward, new Vector3(1, -15, 0).normalized);
+            camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
             moveanim = movement.y * camForward + movement.x * cam.right;
         }
         else
         {
             moveanim = movement.y * Vector3.forward + movement.x * Vector3.right;
         }
-
         if (moveanim.magnitude > 1)
         {
             moveanim.Normalize();
         }
+
         MoveCharacter(moveanim);
     }
 
@@ -106,9 +106,9 @@ public class Character : MonoBehaviour
     void ConvertMoveInput()
     {
         Vector3 localMove = transform.InverseTransformDirection(moveInput);
-        Debug.Log(localMove);
+        // Debug.Log(localMove);
         turnAmount = localMove.x;
-        forwardAmount = localMove.y;
+        forwardAmount = localMove.z;
     }
 
     void UpdateAnimator()
