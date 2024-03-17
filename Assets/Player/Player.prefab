@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ceabba9f6624392b0eb40bac40524a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   gravityValue: -9.81
   controllerDeadzone: 0.1
   gamepadRotateSmoothing: 1000
@@ -658,7 +658,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  playerController: {fileID: 0}
+  characterController: {fileID: 2214234513334142164}
+  characterMovement: {fileID: 3823103001978497624}
+  animator: {fileID: 3180791452783131592}
 --- !u!114 &6751331606182287264
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class MoveEnemy : MonoBehaviour
     private ObjectPool<MoveEnemy> _pool;
     Vector2 Velocity;
     Vector2 SmoothDeltaPosition;
+    float attackSpeed = 1f;
+    float timePassed;
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timePassed += Time.deltaTime;
         if (enemy.enabled)
         {
             enemy.SetDestination(player.transform.position);
@@ -45,10 +48,21 @@ public class MoveEnemy : MonoBehaviour
         else
         {
             animator.SetBool("move", false);
+            handleAttack();
         }
     }
 
     void handleAttack(){
+        if (timePassed > attackSpeed)
+        {
+            transform.LookAt(player.transform);
+            animator.SetBool("isAttacking", true);
+            timePassed = 0;
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
 
     }
 

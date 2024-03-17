@@ -5,13 +5,13 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.Pool;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int maxHealth;
-    [NonSerialized] public int currentHealth;
+    public float maxHealth;
+    [NonSerialized] public float currentHealth;
     [SerializeField] UnityEvent enemyRelease;
     [SerializeField] float timeTillDeath = 3;
     bool isDead;
@@ -19,6 +19,9 @@ public class EnemyHealth : MonoBehaviour
     CapsuleCollider cc;
     NavMeshAgent nma;
     Rigidbody rb;
+    [SerializeField] Animator animator;
+    [SerializeField] Image healthFill;
+
 
     void Awake()
     {
@@ -41,6 +44,11 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        healthFill.fillAmount = currentHealth/maxHealth;
+        healthFill.transform.LookAt(Camera.main.transform);
+    }
     public void ApplyDamage(int dmg)
     {
         currentHealth -= dmg;
@@ -55,12 +63,12 @@ public class EnemyHealth : MonoBehaviour
         if(isDead)return;
         // Debug.Log("dead once");
         isDead = true;
+        animator.SetBool("isDead", true);
 
         nma.speed = 0;
         cc.enabled = false;
         // Debug.Log("I'm so death");
         StartCoroutine(DelayedDeath());
-        // enemy death animation
     }
 
     private IEnumerator DelayedDeath()

@@ -6,16 +6,23 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    
+
+    float attackSpeed = 1f;
+    float timePassed;
     public int damageDealt;
 
+    void Update()
+    {
+        timePassed += Time.deltaTime;
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.transform.root.CompareTag("Player") && timePassed > attackSpeed)
         {
             var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
             playerHealth.ApplyDamage(damageDealt);
+            timePassed = 0;
         }
     }
 }
