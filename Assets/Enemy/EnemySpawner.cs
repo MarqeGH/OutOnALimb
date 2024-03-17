@@ -8,10 +8,16 @@ public class EnemySpawner : MonoBehaviour
 {
     public ObjectPool<MoveEnemy> _pool;
     public MoveEnemy prefab;
+
+    [SerializeField] Transform playerPos;
+    [SerializeField] Transform triggerPos;
     [SerializeField] int defaultPool;
     [SerializeField] int poolSize;
     [SerializeField] float spawnTimer = 5;
     bool doSpawn = true;
+    float timePassed;
+
+    float playerDistance;
 
 
     void Start()
@@ -23,15 +29,25 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if ((int)Time.timeSinceLevelLoad%spawnTimer == 0 && doSpawn == true)
+        timePassed += Time.deltaTime;
+        // if (Time.timeSinceLevelLoad%spawnTimer <= 0 && doSpawn == true)
+        // {
+        //     doSpawn = false;
+        //     _pool.Get();
+        // }
+        // else if (Time.timeSinceLevelLoad%spawnTimer > 0)
+        // {
+        //     doSpawn = true;
+        // }
+        playerDistance = Vector3.Distance(playerPos.position, triggerPos.position);
+        spawnTimer = playerDistance/8f;
+        if (timePassed > spawnTimer+0.1f)
         {
-            doSpawn = false;
             _pool.Get();
+            timePassed = 0;
         }
-        else if ((int)Time.timeSinceLevelLoad%spawnTimer > 0)
-        {
-            doSpawn = true;
-        }
+
+        Debug.Log("playerDistance: " + playerDistance + ", timer: " + spawnTimer + "remainder: " + Time.timeSinceLevelLoad%spawnTimer);
     }
     
     // Create Enemies for pool

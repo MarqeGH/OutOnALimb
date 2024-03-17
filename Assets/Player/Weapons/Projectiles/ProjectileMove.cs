@@ -34,7 +34,7 @@ public class ProjectileMove : MonoBehaviour
     {
         if (!other.transform.root.CompareTag("Player") && !other.CompareTag("Projectile"))
         {
-            Debug.Log(other);
+            // Debug.Log(other);
             _pool.Release(this);
             // NOTE: Physics weird?? Sleep / Wake b4 release? Switch AddForce --> Translate + Interpolate(if rb not working)
         }

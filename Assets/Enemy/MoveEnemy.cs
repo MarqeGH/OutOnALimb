@@ -22,6 +22,7 @@ public class MoveEnemy : MonoBehaviour
         animator.applyRootMotion = true;
         enemy.updatePosition = true;
         enemy.updateRotation = true;
+        enemy.speed = 13f;
     }
 
     // Update is called once per frame
@@ -37,7 +38,6 @@ public class MoveEnemy : MonoBehaviour
     void handleAnimations()
     {
         float distance = Vector3.Distance(enemy.transform.position, player.transform.position);
-        Debug.Log(distance);
         if (distance > enemy.stoppingDistance)
         {
             animator.SetBool("move", true);
@@ -49,7 +49,7 @@ public class MoveEnemy : MonoBehaviour
     }
 
     void handleAttack(){
-        
+
     }
 
     public void StopMoving()

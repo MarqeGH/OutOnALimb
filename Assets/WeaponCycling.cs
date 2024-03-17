@@ -76,5 +76,9 @@ public class WeaponCycling : MonoBehaviour
     public void FillWeaponTime(float fill)
     {
         timeLeft += fill;
+        if (currentWeapon.gameObject == GameObject.Find("Gun"))
+        {
+            Debug.Log(fill);
+        }
     }
 }
