@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Image healthBarUI;
     [SerializeField] GameObject deathUI;
+    [SerializeField] SoundEffects soundEffect;
     float healthRegen = 5;
     bool hasDied = false;
     public bool invincible = false;
@@ -40,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
         if(invincible == false)
         {
             currentHealth -= dmg;
+            soundEffect.PlayClip(soundEffect.hit);
 
             Debug.Log(currentHealth);
             if (currentHealth <= 0)

@@ -16,7 +16,10 @@ public class DeathMenu : MonoBehaviour
         exitButton.onClick.AddListener(ExitGame);
     }
 
-    // Update is called once per frame
+    void OnEnable()
+    {
+        activeUI.SetActive(false);
+    }
 
     void RetryGame()
     {
@@ -26,13 +29,9 @@ public class DeathMenu : MonoBehaviour
     
     void ExitGame()
     {
-        Debug.Log("exiting game");
         Application.Quit();
     }
 
 
-    void OnEnable()
-    {
-        activeUI.SetActive(false);
-    }
+
 }

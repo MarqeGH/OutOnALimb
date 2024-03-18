@@ -10,11 +10,12 @@ public class VictoryScreen : MonoBehaviour
 
     [SerializeField] GameObject winnerScreen;
     [SerializeField] PlayerHealth invincibleCheck;
-
+    [SerializeField] SoundEffects soundEffect;
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player"))
         {
             winnerScreen.SetActive(true);
+            soundEffect.PlayClip(soundEffect.complete);
             Invoke("GoToCredits", 5f);
             invincibleCheck.invincible = true;
         }

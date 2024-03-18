@@ -20,7 +20,8 @@ public class FireWeapon : MonoBehaviour
     
     WeaponCycling weaponCycling;
     float timePassed;
-    PlayerControls playerControls;
+    [SerializeField] SoundEffects soundEffect;
+    [SerializeField] AudioClip weaponClip;
 
 
     void Awake()
@@ -51,6 +52,10 @@ public class FireWeapon : MonoBehaviour
             _pool.Get();
             timePassed = 0;
             weaponCycling.FillWeaponTime(timeValue);
+            if (weaponClip != null)
+            {
+                soundEffect.PlayClip(weaponClip);
+            }
         }
     }
     private ProjectileMove CreateProjectile()
