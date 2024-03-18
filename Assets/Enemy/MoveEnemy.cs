@@ -16,6 +16,10 @@ public class MoveEnemy : MonoBehaviour
     Vector2 SmoothDeltaPosition;
     float attackSpeed = 1f;
     float timePassed;
+    int random;
+    GameObject currentSkin;
+
+    List<GameObject> enemySkin = new List<GameObject>();
 
     void Start()
     {
@@ -24,7 +28,8 @@ public class MoveEnemy : MonoBehaviour
         animator.applyRootMotion = true;
         enemy.updatePosition = true;
         enemy.updateRotation = true;
-        enemy.speed = 13f;
+        enemy.speed = 14f;
+        DefineSkinAtStart();
     }
 
     // Update is called once per frame
@@ -78,6 +83,21 @@ public class MoveEnemy : MonoBehaviour
         _pool.Release(this);
     }
 
+    void DefineSkinAtStart()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            if (!child.gameObject.activeSelf)
+            {
+                Debug.Log(child);
+                enemySkin.Add(child.gameObject);
+            }
+        }
+        random = Random.Range(0, enemySkin.Count);
+        currentSkin = enemySkin[random];
+        currentSkin.SetActive(true);
+        Debug.Log(enemySkin);
+    }
 
 
     public void SetPool(ObjectPool<MoveEnemy> pool)

@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 aim;
+    public Vector3 getForFireWeapon;
 
     Transform cam;
     Vector3 camForward;
@@ -150,6 +151,7 @@ public class Character : MonoBehaviour
             {
                 Vector3 point = ray.GetPoint(rayDistance);
                 LookAt(point);
+                getForFireWeapon = point;
             }
         }
     }

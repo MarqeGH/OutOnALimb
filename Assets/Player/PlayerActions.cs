@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +20,8 @@ public class PlayerActions : MonoBehaviour
     bool RMBisPressed;
     bool isShootingLeft = false;
     bool isShootingRight = false;
+
+    public PauseMenu pauseMenu;
 
 
     // Start is called before the first frame update
@@ -73,6 +77,19 @@ public class PlayerActions : MonoBehaviour
         else 
         {
             isShootingLeft = false;
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!pauseMenu.gameObject.activeSelf)
+            {
+                pauseMenu.gameObject.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                pauseMenu.gameObject.SetActive(false);
+                Time.timeScale = 1;
+            }
         }
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - Right Arm
   - Left Arm
   - Projectile
+  - Perry
+  - Fence
   layers:
   - Default
   - TransparentFX

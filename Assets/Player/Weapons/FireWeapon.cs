@@ -15,10 +15,18 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] float attackSpeed;
     [SerializeField] float timeValue;
     public Sprite weaponImage; 
+
+    Character character;
     
     WeaponCycling weaponCycling;
     float timePassed;
+    PlayerControls playerControls;
 
+
+    void Awake()
+    {
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+    }
     void OnEnable()
     {
         weaponCycling = transform.parent.gameObject.GetComponent<WeaponCycling>();
@@ -45,11 +53,10 @@ public class FireWeapon : MonoBehaviour
             weaponCycling.FillWeaponTime(timeValue);
         }
     }
-
     private ProjectileMove CreateProjectile()
     {
         // Spawn new instance of bullet
-        ProjectileMove projectile = Instantiate(prefab, transform.position, transform.root.transform.rotation);
+        ProjectileMove projectile = Instantiate(prefab, transform.position, Quaternion.LookRotation(character.getForFireWeapon, Vector3.forward));
         // Debug.Log("root: " + transform.root);
         // Debug.Log("Projectile transform: " + transform.rotation);
         // Debug.Log("Root transform: " + transform.root.transform.rotation);

@@ -32,10 +32,12 @@ public class ProjectileMove : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (!other.transform.root.CompareTag("Player") && !other.CompareTag("Projectile"))
+        if (!other.transform.root.CompareTag("Player") 
+            && !other.CompareTag("Projectile") 
+            && !gameObject.CompareTag("Perry") 
+            && !other.CompareTag("Fence"))
         {
-            // Debug.Log(other);
-            _pool.Release(this);
+                _pool.Release(this);
             // NOTE: Physics weird?? Sleep / Wake b4 release? Switch AddForce --> Translate + Interpolate(if rb not working)
         }
     }

@@ -16,6 +16,10 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] Animator animator;
     [SerializeField] Image healthBarUI;
+    [SerializeField] GameObject deathUI;
+    float healthRegen = 5;
+    bool hasDied = false;
+    public bool invincible = false;
 
     void Awake()
     {
@@ -25,26 +29,44 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         healthBarUI.fillAmount = currentHealth/maxHealth;
+        if (currentHealth < maxHealth)
+        {
+            currentHealth+= healthRegen*Time.deltaTime;
+        }
     }
 
     public void ApplyDamage(int dmg)
     {
-        currentHealth -= dmg;
-
-        Debug.Log(currentHealth);
-        if (currentHealth <= 0)
+        if(invincible == false)
         {
-            PlayerDeath();
+            currentHealth -= dmg;
+
+            Debug.Log(currentHealth);
+            if (currentHealth <= 0)
+            {
+                PlayerDeath();
+            }
         }
     }
 
     void PlayerDeath()
     {
-        characterController.enabled = false;
-        characterMovement.enabled = false;
-        Debug.Log("I'm so death");
-        animator.SetBool("isDead", true);
+        if (hasDied == false)
+        {
+            characterController.enabled = false;
+            characterMovement.enabled = false;
+            animator.SetBool("isDead", true);
+            Invoke("TriggerDeadScreen", 2);
+            hasDied = true;
+        }
         // player death animation
         // trigger "you died" screen
+    }
+    void TriggerDeadScreen()
+    {
+        if (!deathUI.activeSelf)
+        {
+            deathUI.SetActive(true);    
+        }
     }
 }

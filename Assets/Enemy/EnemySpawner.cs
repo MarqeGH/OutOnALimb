@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int defaultPool;
     [SerializeField] int poolSize;
     [SerializeField] float spawnTimer = 5;
-    bool doSpawn = true;
     float timePassed;
 
     float playerDistance;
@@ -30,24 +29,13 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         timePassed += Time.deltaTime;
-        // if (Time.timeSinceLevelLoad%spawnTimer <= 0 && doSpawn == true)
-        // {
-        //     doSpawn = false;
-        //     _pool.Get();
-        // }
-        // else if (Time.timeSinceLevelLoad%spawnTimer > 0)
-        // {
-        //     doSpawn = true;
-        // }
         playerDistance = Vector3.Distance(playerPos.position, triggerPos.position);
-        spawnTimer = playerDistance/8f;
+        spawnTimer = playerDistance/10f;
         if (timePassed > spawnTimer+0.1f)
         {
             _pool.Get();
             timePassed = 0;
         }
-
-        Debug.Log("playerDistance: " + playerDistance + ", timer: " + spawnTimer + "remainder: " + Time.timeSinceLevelLoad%spawnTimer);
     }
     
     // Create Enemies for pool

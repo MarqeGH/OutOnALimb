@@ -21,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     Rigidbody rb;
     [SerializeField] Animator animator;
     [SerializeField] Image healthFill;
+    [SerializeField] GameObject healthUI;
 
 
     void Awake()
@@ -47,11 +48,12 @@ public class EnemyHealth : MonoBehaviour
     void Update()
     {
         healthFill.fillAmount = currentHealth/maxHealth;
-        healthFill.transform.LookAt(Camera.main.transform);
+        healthUI.transform.LookAt(Camera.main.transform);
     }
     public void ApplyDamage(int dmg)
     {
         currentHealth -= dmg;
+        Debug.Log("took damage");
         if (currentHealth <= 0)
         {
             EnemyDeath();
@@ -61,10 +63,10 @@ public class EnemyHealth : MonoBehaviour
     void EnemyDeath()
     {
         if(isDead)return;
+        healthUI.SetActive(false);
         // Debug.Log("dead once");
         isDead = true;
         animator.SetBool("isDead", true);
-
         nma.speed = 0;
         cc.enabled = false;
         // Debug.Log("I'm so death");

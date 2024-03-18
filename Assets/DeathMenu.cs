@@ -1,30 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
-public class PauseMenu : MonoBehaviour
+public class DeathMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    [SerializeField] GameObject activeUI;
+    [SerializeField] Button retryButton;
     [SerializeField] Button exitButton;
-    [SerializeField] Button resumeButton;
     void Start()
     {
-        resumeButton.onClick.AddListener(ResumeGame);
+        retryButton.onClick.AddListener(RetryGame);
         exitButton.onClick.AddListener(ExitGame);
     }
 
     // Update is called once per frame
 
-    void ResumeGame()
+    void RetryGame()
     {
-        gameObject.SetActive(false);
-        if (Time.timeScale < 1)
-        {
-            Time.timeScale = 1;
-        }
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
     
     void ExitGame()
@@ -33,4 +30,9 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
+
+    void OnEnable()
+    {
+        activeUI.SetActive(false);
+    }
 }

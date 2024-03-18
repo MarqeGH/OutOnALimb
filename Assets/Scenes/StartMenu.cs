@@ -17,12 +17,6 @@ public class StartMenu : MonoBehaviour
         exitButton.onClick.AddListener(ExitGame);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -34,7 +28,6 @@ public class StartMenu : MonoBehaviour
     
     void ExitGame()
     {
-        Debug.Log("exiting game");
         Application.Quit();
     }
     // Start is called before the first frame update

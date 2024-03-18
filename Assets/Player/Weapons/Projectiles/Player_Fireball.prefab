@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64755733675204183987de8ec39b9424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDealt: 40
+  damageDealt: 50
 --- !u!114 &5371821130964556581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,8 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754d4272c291a4a1aba97a4b8d4290c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 50
+  speed: 5
   timeTillRelease: 4
   rb: {fileID: 2486850376624632722}
 --- !u!54 &2486850376624632722
