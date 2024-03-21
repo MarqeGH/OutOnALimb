@@ -46240,10 +46240,10 @@ MonoBehaviour:
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_OverrideTileSize: 1
+  m_TileSize: 16
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.25
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f3105e2b5b75d4c0ea57afb5d122a4d8, type: 2}
   m_BuildHeightMesh: 0
@@ -88372,18 +88372,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1581724314}
     - target: {fileID: 93977513309129443, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: maxHealth
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 93977513309129443, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 93977513309129443, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: invincible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 93977513309129443, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: healthBarUI
       value: 
       objectReference: {fileID: 449475661}
@@ -88392,49 +88380,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1954736769}
     - target: {fileID: 489944112069847440, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 489944112069847440, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: weaponClip
-      value: 
-      objectReference: {fileID: 8300000, guid: bc5a2b7e1aa854877a8ba7ca3edd06d4, type: 3}
-    - target: {fileID: 489944112069847440, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: soundEffect
       value: 
       objectReference: {fileID: 1954736769}
-    - target: {fileID: 761624421303826938, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 761624421303826938, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: weaponClip
-      value: 
-      objectReference: {fileID: 8300000, guid: bc5a2b7e1aa854877a8ba7ca3edd06d4, type: 3}
     - target: {fileID: 761624421303826938, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: soundEffect
       value: 
       objectReference: {fileID: 1954736769}
     - target: {fileID: 962671562866525608, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 962671562866525608, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: weaponClip
-      value: 
-      objectReference: {fileID: 8300000, guid: bee9f9708901d4e648a820868f39b591, type: 3}
-    - target: {fileID: 962671562866525608, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: soundEffect
       value: 
       objectReference: {fileID: 1954736769}
-    - target: {fileID: 1452422250224053454, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 1452422250224053454, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: weaponClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ad27d1a3647044e0c8fa0daec65f5b77, type: 3}
     - target: {fileID: 1452422250224053454, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: soundEffect
       value: 
@@ -88487,10 +88443,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823103001978497624, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4346614310331723285, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: UIWeapon
       value: 
@@ -88500,25 +88452,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 505693332}
     - target: {fileID: 7092666208699935732, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 7092666208699935732, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: weaponClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ad27d1a3647044e0c8fa0daec65f5b77, type: 3}
-    - target: {fileID: 7092666208699935732, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: soundEffect
       value: 
       objectReference: {fileID: 1954736769}
-    - target: {fileID: 7153023553491183532, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 1108111508}
-    - target: {fileID: 7153023553491183532, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
-      propertyPath: weaponClip
-      value: 
-      objectReference: {fileID: 8300000, guid: bee9f9708901d4e648a820868f39b591, type: 3}
     - target: {fileID: 7153023553491183532, guid: 8462578b542cc46ac97ef726dcdc5ed2, type: 3}
       propertyPath: soundEffect
       value: 

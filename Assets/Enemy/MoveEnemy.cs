@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Pool;
@@ -18,6 +19,7 @@ public class MoveEnemy : MonoBehaviour
     float timePassed;
     int random;
     GameObject currentSkin;
+    float speed_step = 0.05f;
 
     List<GameObject> enemySkin = new List<GameObject>();
 
@@ -41,6 +43,7 @@ public class MoveEnemy : MonoBehaviour
             enemy.SetDestination(player.transform.position);
         }
         handleAnimations();
+        enemy.speed += speed_step*Time.deltaTime;
     }
 
     void handleAnimations()
@@ -68,7 +71,6 @@ public class MoveEnemy : MonoBehaviour
         {
             animator.SetBool("isAttacking", false);
         }
-
     }
 
     public void StopMoving()
@@ -98,7 +100,6 @@ public class MoveEnemy : MonoBehaviour
         currentSkin.SetActive(true);
         Debug.Log(enemySkin);
     }
-
 
     public void SetPool(ObjectPool<MoveEnemy> pool)
     {
